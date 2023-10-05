@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:,">
+    <title>Edit Book</title>
+</head>
+<body>
+    <h1>Edit Book</h1>
+    <form method="POST" action="{{ url_for('edit') }}">
+        {{ form.hidden_tag() }}
+        <div>
+            <label for="username">Username:</label>
+            {{ form.username() }}
+        </div>
+        <div>
+            <label for="password">Password:</label>
+            {{ form.password() }}
+        </div>
+        <div>
+            <input type="submit" value="Update Profile">
+        </div>
+    </form>
+</body>
+</html>

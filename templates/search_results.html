@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="icon" href="data:,">
+    <title>Search Results</title>
+</head>
+<body>
+    {% include 'navbar.html' %}
+    <h1>Search Results for "{{ query }}"</h1>
+    <ul>
+        {% for book in books %}
+            <li>
+                <img src="{{ book.volumeInfo.imageLinks.thumbnail }}" alt="Thumbnail">
+                {{ book.volumeInfo.title }} by {{ book.volumeInfo.authors|join(', ') }}
+                <p>Description: {{ book.volumeInfo.description }}</p>
+                <p>Subjects: {{ book.volumeInfo.categories|join(', ') }}</p>
+                <a href="{{ url_for('add_google_book', book_id=book.id) }}">Add to My Books</a>
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{{ url_for('index') }}">Back to My Books</a>
+    <a href="{{ url_for('logout') }}">Logout</a>
+</body>
+</html>
